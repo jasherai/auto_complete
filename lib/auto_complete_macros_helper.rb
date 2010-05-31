@@ -99,7 +99,7 @@ module AutoCompleteMacrosHelper
   def auto_complete_result(entries, method, phrase = nil)
     return unless entries
     items = entries.map { |entry| content_tag("li", phrase ? highlight(entry.send(method), phrase) : h(entry.send(method))) }
-    content_tag("ul", items.uniq.join)
+    content_tag("ul", items.uniq.join.html_safe)
   end
   
   # Wrapper for text_field with added AJAX autocompletion functionality.
