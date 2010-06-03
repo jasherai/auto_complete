@@ -32,12 +32,12 @@ module AutoCompleteFormBuilderHelper
       :url => { :action => "auto_complete_for_#{class_name}_#{method}" },
       :param_name => "#{class_name}[#{method}]"
     }.update(completion_options)
-    @template.auto_complete_field_with_style_and_script(unique_object_name,
+    @template.auto_complete_field_with_style_and_script(unique_object_name.html_safe,
                                                         method,
                                                         tag_options,
                                                         completion_options_for_class_name
                                                        ) do
-      text_field(method, { :id => "#{unique_object_name}_#{method}" }.update(tag_options))
+      text_field(method, { :id => "#{unique_object_name.html_safe}_#{method}" }.update(tag_options))
     end
   end
 
